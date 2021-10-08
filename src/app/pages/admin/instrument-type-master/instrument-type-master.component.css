@@ -1,0 +1,9 @@
+.hide{
+    display: none;
+}
+th.mat-column-description{
+    width: 50%;
+}
+.example-margin {
+    margin: 0 12px;
+  }

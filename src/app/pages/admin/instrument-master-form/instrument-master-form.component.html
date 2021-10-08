@@ -1,0 +1,155 @@
+
+        <form  (ngSubmit)="formSubmit()">
+            <mat-dialog-content class="bootstrap-wrapper mat-typography">
+                <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Instrument Type</mat-label>
+                        <mat-select required name="instrumentTypeMaster" [(ngModel)]="instrumentMaster.instrumentType.id">
+                            <mat-option value="">-Select-</mat-option>
+                            <mat-option *ngFor="let instrumentType of instrumentTypes " [value]="instrumentType.id">
+                              {{instrumentType.shortName}}
+                            </mat-option>
+                          </mat-select>
+                       
+                       
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Detaprtment</mat-label>
+                        <mat-select required name="department" [(ngModel)]="instrumentMaster.department.id">
+                            <mat-option value="">-Select-</mat-option>
+                            <mat-option *ngFor="let department of departments" [value]="department.id">
+                              {{department.name}}
+                            </mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Code</mat-label>
+                        <input required  matInput placeholder="Instrument Code" name="code" [(ngModel)]="instrumentMaster.code">
+                    </mat-form-field>
+                   
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Description</mat-label>
+                        <input required  matInput placeholder="description" name="description" [(ngModel)]="instrumentMaster.description">
+                    </mat-form-field>
+                </div>
+            </div>
+           
+        
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Make</mat-label>
+                        <input required  matInput placeholder="make" name="make" [(ngModel)]="instrumentMaster.make">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Purchace Date</mat-label>
+                        <input matInput [max]="maxDate"  [matDatepicker]="picker" name="purchaseDate" [(ngModel)]="instrumentMaster.purchaseDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Calibration Frequency (Days)</mat-label>
+                        <input type="number" required  matInput placeholder="calibrationFrequency" name="calibrationFrequency" [(ngModel)]="instrumentMaster.calibrationFrequency">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Last Calibration Date</mat-label>
+                       
+                            <input matInput [max]="maxDate"  [matDatepicker]="picker2" name="lastCalibrationDate" [(ngModel)]="instrumentMaster.lastCalibrationDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                        
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Where Used</mat-label>
+                        <input required  matInput placeholder="whereUsed" name="whereUsed" [(ngModel)]="instrumentMaster.whereUsed">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Range</mat-label>
+                        <input required  matInput placeholder="range" name="calibrationRange" [(ngModel)]="instrumentMaster.calibrationRange">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Accuracy</mat-label>
+                        <input required  matInput placeholder="accuracy" name="accuracy" [(ngModel)]="instrumentMaster.accuracy">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label title="Accuracy unit of measure">Accuracy UOM</mat-label>
+                        <mat-select required name="accuracyUom" [(ngModel)]="instrumentMaster.accuracyUom">
+                            <mat-option *ngFor="let unit of units" [value]="unit.name">
+                              {{unit.name}}
+                            </mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Master Std</mat-label>
+                        <input required  matInput placeholder="masterStd" name="masterStd" [(ngModel)]="instrumentMaster.masterStd">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label >Least Count</mat-label>
+                        <input type="number" required   matInput placeholder="leastCount" name="leastCount" [(ngModel)]="instrumentMaster.leastCount">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Calibration Agency</mat-label>
+                        <mat-select name="calibrationAgency" [(ngModel)]="instrumentMaster.calibrationAgency">
+                            <mat-option [value]="null">-Select-</mat-option>
+                            <mat-option *ngFor="let agency of calibrationAgencies"  [value]="agency">
+                              {{agency.name}}
+                            </mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                </div>
+               
+            </div>
+        </div>
+        </mat-dialog-content>
+        
+        <mat-dialog-actions align="end">
+                <button type="submit" mat-raised-button color="primary">Save</button>
+                &nbsp; &nbsp;
+                    <button type="button" mat-raised-button color="accent" (click)="onClose()">Cancel</button>
+                </mat-dialog-actions>
+        </form>
+

@@ -1,0 +1,75 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 offset-md-0">
+                <mat-card class="my-20">
+                <!-- <div class="container text-center">
+                    <img src="../../../assets/img/" alt="Logo">
+                </div> -->
+                <h1 class="text-center">Add Company Here!!</h1>
+                <form (ngSubmit)="formSubmit()">
+                    <!-- <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Companyname</mat-label>
+                        <input required maxlength="30" minlength="5" matInput placeholder="Username" name="username" [(ngModel)]="user.username">
+                        <mat-hint>Username must be unique!</mat-hint>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input type="password" required matInput placeholder="Password" name="password" [(ngModel)]="user.password">
+                    </mat-form-field> -->
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Company Name</mat-label>
+                        <input required matInput placeholder="Company Name" name="companyName" [(ngModel)]="user.name">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Address</mat-label>
+                        <input matInput placeholder="Address" name="address" [(ngModel)]="user.address">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput placeholder="Email" name="email" [(ngModel)]="user.email">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Phone</mat-label>
+                        <input matInput placeholder="Phone" name="phone" [(ngModel)]="user.phone">
+                    </mat-form-field>
+
+                    <!-- <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Company Logo</mat-label>
+                        <input matInput placeholder="Logo" name="logo" [(ngModel)]="user.logo">
+                    </mat-form-field> -->
+
+                    <mat-form-field class="myfilebrowser">
+                        <mat-label>Logo</mat-label>
+                        <div >
+                          <mat-toolbar>                    
+                            <!-- Readonly Input to show File names -->
+                            <input matInput [(ngModel)]="myfilename" readonly name="memberContactNo" />            
+                            <!-- Browse Button -->
+                         <button mat-flat-button color="primary">
+                              Browse
+                            </button>                   
+                          </mat-toolbar>                    
+                          <!-- Fetch selected filed on change -->
+                          <input type="file" #UploadFileInput id="fileUpload"  (change)="fileChangeEvent($event)" name="fileUpload"
+                            multiple="multiple" accept="image/*" />                    
+                        </div>                   
+                    </mat-form-field>
+
+                    <div class="container text-center">
+                        <button type="submit" mat-raised-button color="primary">Add</button>
+                        &nbsp; &nbsp;
+                            <!-- <button type="button" mat-raised-button color="accent">Cancel</button> -->
+                        <button type="button" mat-raised-button color="accent" (click)="onClose()">Cancel</button>
+                    </div>
+                </form>
+            </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

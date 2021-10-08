@@ -1,0 +1,50 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$market-primary:mat-palette($mat-indigo);
+$market-accent:mat-palette($mat-pink,A200,A100,A400);
+$market-warn:mat-palette($mat-red);
+$market-theme:mat-light-theme($market-primary,$market-accent,$market-warn);
+$market-theme-dark:mat-dark-theme($market-primary,$market-accent,$market-warn);
+
+@include angular-material-theme($market-theme);
+
+.theme-dark{
+    @include angular-material-theme($market-theme-dark);
+}
+
+// $market-primary-orange:mat-palette($mat-orange);
+// $market-accent-orange:mat-palette($mat-yellow,A200,A100,A400);
+// $market-warn-orange:mat-palette($mat-red);
+$market-theme-dark-orange:mat-dark-theme(
+                        mat-palette($mat-orange),
+                        mat-palette($mat-yellow,A200,A100,A400),
+                        mat-palette($mat-red));
+
+$market-theme-light-orange:mat-light-theme(
+                            mat-palette($mat-orange),
+                            mat-palette($mat-yellow,A200,A100,A400),
+                            mat-palette($mat-red));
+.theme-dark-orange{
+    @include angular-material-theme($market-theme-dark-orange);
+}
+
+.theme-light-orange{
+    @include angular-material-theme($market-theme-light-orange);
+}
+
+$market-theme-blue:mat-light-theme(
+                            mat-palette($mat-blue),
+                            mat-palette($mat-cyan,A200,A100,A400),
+                            mat-palette($mat-red));
+.theme-light-blue{
+    @include angular-material-theme($market-theme-blue);
+}
+
+$market-theme-green:mat-light-theme(
+                            mat-palette($mat-green),
+                            mat-palette($mat-teal,A200,A100,A400),
+                            mat-palette($mat-red));
+.theme-light-green{
+    @include angular-material-theme($market-theme-green);
+}

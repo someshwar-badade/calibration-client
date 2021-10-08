@@ -1,0 +1,43 @@
+<mat-card>
+    <h1>Add New Quiz</h1>
+    <mat-card-content>
+        <form class="col-md-6 offset-md-3" (ngSubmit)="formSubmit()">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Title</mat-label>
+                <input required maxlength="30" minlength="5" matInput placeholder="Quiz title" name="title" [(ngModel)]="quiz.title">
+                
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea required matInput placeholder="Quiz description" name="description" [(ngModel)]="quiz.description" rows="10"></textarea>
+            </mat-form-field>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Maximum Marks</mat-label>
+                        <input required maxlength="30" minlength="5" matInput placeholder="Maximum Marks" name="maxMarks" [(ngModel)]="quiz.maxMarks">
+                        
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Number of questions</mat-label>
+                        <input required maxlength="30" minlength="5" matInput placeholder="Number of questions" name="numberOfQuestions" [(ngModel)]="quiz.numberOfQuestions">
+                        
+                    </mat-form-field>
+                </div>
+            </div>
+            
+
+           
+
+            <div class="container text-center">
+                <button type="submit" mat-raised-button color="primary">Save</button>
+                &nbsp; &nbsp;
+                    <button type="button" mat-raised-button color="accent">Clear</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

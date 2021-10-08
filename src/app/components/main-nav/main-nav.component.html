@@ -1,0 +1,98 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/admin" >
+        <mat-icon mat-list-icon>home</mat-icon> Home
+    </a>
+    <a mat-list-item routerLink="/admin/profile" [routerLinkActive]="['active']">
+        <mat-icon mat-list-icon>account_circle</mat-icon> Profile
+    </a>
+    <a mat-list-item routerLink="/admin/company" [routerLinkActive]="['active']">
+        <mat-icon mat-list-icon>business</mat-icon> Company
+    </a>
+    <a mat-list-item routerLink="/admin/instrument-type-master" [routerLinkActive]="['active']">
+        <mat-icon mat-list-icon>toc</mat-icon> Instrument Type Master
+    </a>
+    <a mat-list-item routerLink="/admin/instrument-master" [routerLinkActive]="['active']">
+        <mat-icon mat-list-icon>thermostat</mat-icon> Instrument Master
+    </a>
+    <a mat-list-item routerLink="/admin/instrument-calibration" [routerLinkActive]="['active']">
+        <mat-icon mat-list-icon>compass_calibration</mat-icon> Instrument Calibration
+    </a>
+    <a mat-list-item routerLink="/admin/calibration-completion" [routerLinkActive]="['active']">
+        <mat-icon mat-list-icon>compass_calibration</mat-icon> Calibration Completion
+    </a>
+    <a mat-list-item routerLink="/admin/traceablity" [routerLinkActive]="['active']">
+        <mat-icon mat-list-icon>analytics</mat-icon> Traceablity
+    </a>
+    <a mat-list-item routerLink="/admin/reports" [routerLinkActive]="['active']">
+        <mat-icon mat-list-icon>summarize</mat-icon> Reports
+    </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div *ngIf="loaderService.isLoading | async" class="loader-container">
+      <mat-progress-bar color="accent" mode="indeterminate"></mat-progress-bar>
+  </div>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Calibration</span>
+      
+      <span class="spacer"></span>
+      <button mat-icon-button [matMenuTriggerFor]="themeMenu" class="mx-10" >
+        Theme
+      </button>
+      <mat-menu #themeMenu="matMenu">
+        <button mat-menu-item (click)="changeTheme('')">
+          <span>Default</span>
+        </button>
+        <button mat-menu-item (click)="changeTheme('theme-dark')">
+          <span>Dark Indigo</span>
+        </button>
+        <button mat-menu-item (click)="changeTheme('theme-light-orange')">
+          <span>Light Orange</span>
+        </button>
+        <button mat-menu-item (click)="changeTheme('theme-dark-orange')">
+          <span>Dark Orange</span>
+        </button>
+        <button mat-menu-item (click)="changeTheme('theme-light-blue')">
+          <span>Blue</span>
+        </button>
+        <button mat-menu-item (click)="changeTheme('theme-light-green')">
+          <span>Green</span>
+        </button>
+      </mat-menu>
+      <span>
+        <!-- <mat-slide-toggle  (change)="onDarkmodeSwitched($event)" labelPosition="before">Dark Mode</mat-slide-toggle> -->
+
+      </span>
+      <a *ngIf="!isLoggedin" [routerLink]="'/login'" mat-icon-button class="example-icon mx-10">
+        Login
+    </a>
+    <a *ngIf="!isLoggedin" [routerLink]="'/signup'" mat-icon-button class="example-icon mx-10">
+        Register
+    </a>
+
+    <a *ngIf="isLoggedin" (click)="logout()"  mat-icon-button class="example-icon mx-10">
+        Logout
+    </a>
+    <a *ngIf="isLoggedin" routerLink="/admin/profile"  mat-button class="example-icon mx-10">
+       Hi, {{user.username}}
+    </a>
+
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content> 
+</mat-sidenav-container>

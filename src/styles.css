@@ -1,0 +1,143 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.text-center{
+    text-align: center;
+}
+.full-width{
+    width: 100%;
+}
+
+.hide{
+    display: none;
+}
+
+.mx-5{
+    margin-left:5px !important;
+    margin-right:5px !important;
+}
+.my-5{
+    margin-top:5px !important;
+    margin-bottom:5px !important;
+}
+
+.mx-10{
+    margin-left:10px !important;
+    margin-right:10px !important;
+}
+
+
+.my-10{
+    margin-top:10px !important;
+    margin-bottom:10px !important;
+}
+
+.mx-20{
+    margin-left:20px !important;
+    margin-right:20px !important;
+}
+
+.my-20{
+    margin-top:20px !important;
+    margin-bottom:20px !important;
+}
+
+
+.mt-10{
+    margin-top:10px !important;
+    margin-bottom:10px !important;
+}
+
+.mt-20{
+    margin-left:20px !important;
+    margin-right:20px !important;
+}
+
+.mt-20{
+    margin-top:20px !important;
+    margin-bottom:20px !important;
+}
+
+.mb-10{
+    margin-top:10px !important;
+    margin-bottom:10px !important;
+}
+
+.mb-20{
+    margin-left:20px !important;
+    margin-right:20px !important;
+}
+
+.mb-20{
+    margin-top:20px !important;
+    margin-bottom:20px !important;
+}
+
+.ml-10{
+    margin-top:10px !important;
+    margin-bottom:10px !important;
+}
+
+.ml-20{
+    margin-left:20px !important;
+    margin-right:20px !important;
+}
+
+.ml-20{
+    margin-top:20px !important;
+    margin-bottom:20px !important;
+}
+
+.mr-10{
+    margin-top:10px !important;
+    margin-bottom:10px !important;
+}
+
+.mr-20{
+    margin-left:20px !important;
+    margin-right:20px !important;
+}
+
+.mr-20{
+    margin-top:20px !important;
+    margin-bottom:20px !important;
+}
+.table{
+    width: 100%;
+}
+
+.mat-table {
+    overflow-x: scroll;
+  }
+
+.mat-cell,
+.mat-header-cell {
+  word-wrap: initial;
+  display: table-cell;
+  
+  line-break: unset;
+  /* width: 100%; */
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.mat-row,
+.mat-header-row {
+  display: table-row;
+}
+.table-container{
+    overflow-x: scroll;
+}
+
+.spacer{
+    flex: 1 1 auto;
+}
+
+.loader-container{
+    width: 100%;
+    position: fixed;
+    z-index: 99;
+}

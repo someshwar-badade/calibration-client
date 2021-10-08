@@ -1,0 +1,57 @@
+<mat-card *ngIf="user">
+    <mat-card-title>Your profile details</mat-card-title>
+
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="container">
+                <div class="container text-center">
+                    <img src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+                        alt="profile-image" class="profile-image">
+                    <h3>{{user.firstName}} {{user.lastName}}</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <table class="table">
+                            <colgroup>
+                                <col style="width: 100px;">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>Username</th>
+                                    <td>{{user.username}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Userid</th>
+                                    <td>{{user.id}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Phone</th>
+                                    <td>{{user.phone}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>{{user.email}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Role</th>
+                                    <td>{{user.authorities[0].authority}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td>{{user.enabled?"ACTIVE":"NOT ACTIVE"}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+        
+    <button mat-raised-button color="primary">Primary</button>
+    <button mat-raised-button color="accent">Accent</button>
+      </mat-card-actions>
+</mat-card>

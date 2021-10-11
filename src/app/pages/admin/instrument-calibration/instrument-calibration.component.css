@@ -1,0 +1,19 @@
+.hide{
+    display: none;
+  }
+
+  .mat-cell,
+  .mat-header-cell {
+    /* width: 100%; */
+    padding: 0px 10px;
+  }
+
+  th.mat-column-instrumentDescription{
+    width: 50%;
+}
+th.mat-column-id{
+    width: 20px;
+  }
+.example-margin {
+    margin: 0 12px;
+  }

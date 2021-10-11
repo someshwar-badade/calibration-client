@@ -4,6 +4,10 @@
 th.mat-column-description{
     width: 50%;
 }
+th.mat-column-id{
+    width: 20px;
+  }
+  
 .example-margin {
     margin: 0 12px;
   }

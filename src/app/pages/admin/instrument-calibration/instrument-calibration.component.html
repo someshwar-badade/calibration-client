@@ -26,7 +26,7 @@
                                 {{column.name}}
                                 <br> -->
           <mat-checkbox class="example-margin" [(ngModel)]="column.isActive" (change)="toggleColumn(column)">
-            {{column.name}}
+            {{column.displayName}}
           </mat-checkbox><br>
         </span>
       </mat-menu>
@@ -67,56 +67,56 @@
   
     <!-- Name Column -->
     <ng-container matColumnDef="dateOfCalibration">
-      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <th mat-header-cell *matHeaderCellDef> DATE </th>
       <td mat-cell *matCellDef="let element"> {{element.dateOfCalibration | date: 'dd/MM/yyyy'}} </td>
     </ng-container>
   
     <!-- Weight Column -->
     <ng-container matColumnDef="logno">
-      <th mat-header-cell *matHeaderCellDef> Log No. </th>
+      <th mat-header-cell *matHeaderCellDef> LOG NO. </th>
       <td mat-cell *matCellDef="let element"> {{element.logno}} </td>
     </ng-container>
   
     <!-- Symbol Column -->
     <ng-container matColumnDef="instrumentCode">
-      <th mat-header-cell *matHeaderCellDef> Instrument Code </th>
+      <th mat-header-cell *matHeaderCellDef> INSTRUMENT CODE </th>
       <td mat-cell *matCellDef="let element"> {{element.instrumentMaster.code}} </td>
     </ng-container>
     <!-- Symbol Column -->
     <ng-container matColumnDef="instrumentDescription">
-      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <th mat-header-cell *matHeaderCellDef> DESCRIPTION </th>
       <td mat-cell *matCellDef="let element"> {{element.instrumentMaster.description}} </td>
     </ng-container>
     <!-- Symbol Column -->
     <ng-container matColumnDef="refNo">
-      <th mat-header-cell *matHeaderCellDef> Reference </th>
+      <th mat-header-cell *matHeaderCellDef> REFERANCE </th>
       <td mat-cell *matCellDef="let element"> {{element.refNo}} </td>
     </ng-container>
     <!-- Symbol Column -->
     <ng-container matColumnDef="remark">
-      <th mat-header-cell *matHeaderCellDef> Remarks </th>
+      <th mat-header-cell *matHeaderCellDef> REMARKS </th>
       <td mat-cell *matCellDef="let element"> {{element.remark}} </td>
     </ng-container>
     <!-- Symbol Column -->
     <ng-container matColumnDef="isExternal">
-      <th mat-header-cell *matHeaderCellDef> Is External? </th>
+      <th mat-header-cell *matHeaderCellDef> IS EXTERNAL? </th>
       <td mat-cell *matCellDef="let element"> {{element.isExternal?'Yes':'No'}} </td>
     </ng-container>
     <!-- Symbol Column -->
     <ng-container matColumnDef="calibrationAgency">
-      <th mat-header-cell *matHeaderCellDef> Calibration Agency </th>
+      <th mat-header-cell *matHeaderCellDef> CALIBRATION AGENCY </th>
       <td mat-cell *matCellDef="let element"> {{element.calibrationAgency?element.calibrationAgency.name:''}} </td>
     </ng-container>
     <!-- Symbol Column -->
     <ng-container matColumnDef="doneBy">
-      <th mat-header-cell *matHeaderCellDef> Done By </th>
+      <th mat-header-cell *matHeaderCellDef> DONE BY </th>
       <td mat-cell *matCellDef="let element"> {{element.doneBy}} </td>
     </ng-container>
     
 
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <th mat-header-cell *matHeaderCellDef> ACTIONS </th>
       <td mat-cell *matCellDef="let element">
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
           <mat-icon>more_vert</mat-icon>

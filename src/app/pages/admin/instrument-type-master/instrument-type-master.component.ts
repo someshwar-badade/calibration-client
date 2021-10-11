@@ -15,6 +15,7 @@ import { InstrumentMasterFormComponent } from '../instrument-master-form/instrum
 interface CustomColumn {
   possition: number;
   name: string;
+  displayName: string;
   isActive: boolean;
 }
 
@@ -149,7 +150,10 @@ export class InstrumentTypeMasterComponent implements OnInit {
   initializeColumnProperties() {
     this.columnList.forEach((element, index) => {
       this.columnShowHideList.push(
-        { possition: index, name: element, isActive: true }
+        { possition: index, 
+          name: element,
+          displayName: element.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1").toLocaleUpperCase(),
+         isActive: true }
       );
     });
   

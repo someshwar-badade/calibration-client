@@ -65,6 +65,7 @@ import { CompanyComponent } from './pages/admin/company/company.component';
 import { CompanyFormComponent } from './pages/admin/company-form/company-form.component';
 import { InstrumentCalibrationDetailsComponent } from './pages/admin/instrument-calibration-details/instrument-calibration-details.component';
 import { InstrumentCalibrationObservationFormComponent } from './pages/admin/instrument-calibration-observation-form/instrument-calibration-observation-form.component';
+import { LoginService } from './services/login.service';
 
 
 @NgModule({
@@ -136,7 +137,7 @@ import { InstrumentCalibrationObservationFormComponent } from './pages/admin/ins
     MatAutocompleteModule
 
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -102,7 +102,7 @@ export class InstrumentMasterComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
 
-    this.dialog.open(InstrumentMasterFormComponent,dialogConfig);
+    this.dialog.open(InstrumentMasterFormComponent,dialogConfig).afterClosed().subscribe(()=>this.initDatasource());
   }
   onEdit(row){
     
@@ -112,7 +112,7 @@ export class InstrumentMasterComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     dialogConfig.data = row;
-    this.dialog.open(InstrumentMasterFormComponent,dialogConfig);
+    this.dialog.open(InstrumentMasterFormComponent,dialogConfig).afterClosed().subscribe(()=>this.initDatasource());
   }
 
   deleteRecord(row){

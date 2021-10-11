@@ -46,7 +46,7 @@ export class InstrumentTypeMasterDetailsComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     dialogConfig.data = this.parameter;
-    this.dialog.open(InstrumentTypeMasterParameterFormComponent,dialogConfig);
+    this.dialog.open(InstrumentTypeMasterParameterFormComponent,dialogConfig).afterClosed().subscribe(()=>this. getInstrumentTypeParameters());
   }
 
   getInstrumentTypeDetails(){
@@ -82,7 +82,7 @@ export class InstrumentTypeMasterDetailsComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     dialogConfig.data = row;
-    this.dialog.open(InstrumentTypeMasterParameterFormComponent,dialogConfig);
+    this.dialog.open(InstrumentTypeMasterParameterFormComponent,dialogConfig).afterClosed().subscribe(()=>this. getInstrumentTypeParameters());
   }
 
   deleteRecord(row){

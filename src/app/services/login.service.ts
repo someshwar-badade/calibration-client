@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import baseUrl from './helper';
 
@@ -11,6 +12,11 @@ export class LoginService {
   public loginStatusSubject = new Subject<boolean>();
   constructor(private http:HttpClient) { }
 
+  form:FormGroup = new FormGroup({
+    username :  new FormControl('',[Validators.required]),
+    password : new FormControl('',[Validators.required])
+  });
+  
   //generate token
   public generateToken(loginData:any){
     return this.http.post(`${baseUrl}/api/generate-token`,loginData);

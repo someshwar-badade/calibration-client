@@ -1,8 +1,8 @@
-<form class="col-md-6 offset-md-3" (ngSubmit)="formSubmit()">
+<form #parameterForm="ngForm" class="col-md-6 offset-md-3" (ngSubmit)="formSubmit()">
     <mat-form-field class="full-width" appearance="outline">
         <mat-label>Parameter</mat-label>
         <input required maxlength="30"  matInput placeholder="Parameter" name="parameter" [(ngModel)]="parameter.parameter">
-        
+        <mat-error>This field is mandatory.</mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width" appearance="outline">
@@ -12,17 +12,19 @@
               {{unit.name}}
             </mat-option>
           </mat-select>
+          <mat-error>This field is mandatory.</mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width" appearance="outline">
         <mat-label>Accuracy</mat-label>
-        <input required maxlength="30"  matInput placeholder="Accuracy" name="accuracy" [(ngModel)]="parameter.accuracy">
-        
+        <input required maxlength="30" required matInput placeholder="Accuracy" name="accuracy" [(ngModel)]="parameter.accuracy">
+        <mat-error>This field is mandatory.</mat-error>
     </mat-form-field>
 
     <div class="container text-center">
-        <button type="submit" mat-raised-button color="primary">Save</button>
+        <button type="submit" [disabled]="parameterForm.invalid" mat-raised-button color="primary">Save</button>
         &nbsp; &nbsp;
             <button type="button" mat-raised-button color="accent" (click)="onClose()">Cancel</button>
     </div>
+    
 </form>

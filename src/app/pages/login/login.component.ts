@@ -10,41 +10,22 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-form = new FormGroup({
-  username:new FormControl('',Validators.required),
-  password:new FormControl('',Validators.required),
-});
+
   user = {
     username: '',
     password: ''
   }
-  constructor(private snak: MatSnackBar, private login: LoginService, private router: Router) { }
+  constructor(private snak: MatSnackBar, public login: LoginService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   formSubmit() {
 
-    if (this.user.username.trim() == '' ||
-      this.user.username == null) {
-      this.snak.open("Username is required.", "", {
-        duration: 3000
-      });
-
-      return;
-    }
-
-    if (this.user.password.trim() == '' ||
-      this.user.password == null) {
-      this.snak.open("Password is required.", "", {
-        duration: 3000
-      });
-
-      return;
-    }
+    if(this.login.form.invalid) return;
 
     //request to server to generate token
-    this.login.generateToken(this.user).subscribe(
+    this.login.generateToken(this.login.form.value).subscribe(
       (data: any) => {
 
 
@@ -88,9 +69,6 @@ form = new FormGroup({
   }
 
   clearForm(){
-    this.user = {
-      username: '',
-      password: ''
-    }
+   this.login.form.reset();
   }
 }

@@ -99,7 +99,7 @@ export class InstrumentCalibrationComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
 
-    this.dialog.open(InstrumentCalibrationFormComponent,dialogConfig);
+    this.dialog.open(InstrumentCalibrationFormComponent,dialogConfig).afterClosed().subscribe(()=>this.initDatasource());
   }
   onEdit(row){
     
@@ -109,7 +109,7 @@ export class InstrumentCalibrationComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     dialogConfig.data = row;
-    this.dialog.open(InstrumentCalibrationFormComponent,dialogConfig);
+    this.dialog.open(InstrumentCalibrationFormComponent,dialogConfig).afterClosed().subscribe(()=>this.initDatasource());
   }
 
   deleteRecord(row){

@@ -24,6 +24,7 @@ import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboa
 import { CompanyComponent } from './pages/admin/company/company.component';
 import { CompanyFormComponent } from './pages/admin/company-form/company-form.component';
 import { InstrumentCalibrationDetailsComponent } from './pages/admin/instrument-calibration-details/instrument-calibration-details.component';
+import { CalibrationAgencyComponent } from './pages/admin/calibration-agency/calibration-agency.component';
 
 const routes: Routes = [
 
@@ -117,6 +118,10 @@ const routes: Routes = [
       {
         path:'company-form',
         component:CompanyFormComponent
+      },
+      {
+        path:'calibration-agency',
+        component:CalibrationAgencyComponent
       },
     ]
   }

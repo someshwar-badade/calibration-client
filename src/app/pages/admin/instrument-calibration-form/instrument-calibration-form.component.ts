@@ -28,7 +28,9 @@ export class InstrumentCalibrationFormComponent implements OnInit {
     refNo: "",
     remark: "",
     isExternal: null,
-    calibrationAgency: null,
+    calibrationAgency: {
+      id:''
+    },
     instrumentMaster: null,
     calibrationObservation:null,
     doneBy: "",
@@ -155,7 +157,9 @@ export class InstrumentCalibrationFormComponent implements OnInit {
       refNo: "",
       remark: "",
       isExternal: null,
-      calibrationAgency: null,
+      calibrationAgency: {
+        id:''
+      },
       instrumentMaster: null,
       calibrationObservation:null,
       doneBy: "",

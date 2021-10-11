@@ -1,0 +1,31 @@
+<form class="col-md-6 offset-md-3" (ngSubmit)="formSubmit()">
+    <mat-dialog-content class="bootstrap-wrapper mat-typography">
+        <div class="container-fluid">
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input required maxlength="30"  matInput placeholder="Name" name="name" [(ngModel)]="agency.name">
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Address</mat-label>
+        <input  maxlength="30"  matInput placeholder="Address" name="address" [(ngModel)]="agency.address">
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input  maxlength="30"  matInput placeholder="Email" name="email" [(ngModel)]="agency.email">
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Mobile</mat-label>
+        <input  maxlength="15"  matInput placeholder="Mobile" name="mobile" [(ngModel)]="agency.mobile">
+    </mat-form-field>
+
+</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+        <button type="submit" mat-raised-button color="primary">Save</button>
+        &nbsp; &nbsp;
+            <button type="button" mat-raised-button color="accent" (click)="onClose()">Cancel</button>
+        </mat-dialog-actions>
+</form>

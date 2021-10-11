@@ -66,6 +66,8 @@ import { CompanyFormComponent } from './pages/admin/company-form/company-form.co
 import { InstrumentCalibrationDetailsComponent } from './pages/admin/instrument-calibration-details/instrument-calibration-details.component';
 import { InstrumentCalibrationObservationFormComponent } from './pages/admin/instrument-calibration-observation-form/instrument-calibration-observation-form.component';
 import { LoginService } from './services/login.service';
+import { CalibrationAgencyComponent } from './pages/admin/calibration-agency/calibration-agency.component';
+import { CalibrationAgencyFormComponent } from './pages/admin/calibration-agency-form/calibration-agency-form.component';
 
 
 @NgModule({
@@ -103,6 +105,8 @@ import { LoginService } from './services/login.service';
     CompanyFormComponent,
     InstrumentCalibrationDetailsComponent,
     InstrumentCalibrationObservationFormComponent,
+    CalibrationAgencyComponent,
+    CalibrationAgencyFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,30 +1,37 @@
-
-        <form  (ngSubmit)="formSubmit()">
-            <mat-dialog-content class="bootstrap-wrapper mat-typography">
-                <div class="container-fluid">
+<form (ngSubmit)="formSubmit()">
+    <mat-dialog-content class="bootstrap-wrapper mat-typography">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Instrument Type</mat-label>
-                        <mat-select required name="instrumentTypeMaster" [(ngModel)]="instrumentMaster.instrumentType.id">
+                        <mat-select required name="instrumentTypeMaster" #instrumentTypeMaster="ngModel"
+                            [(ngModel)]="instrumentMaster.instrumentType.id">
                             <mat-option value="">-Select-</mat-option>
                             <mat-option *ngFor="let instrumentType of instrumentTypes " [value]="instrumentType.id">
-                              {{instrumentType.shortName}}
+                                {{instrumentType.shortName}}
                             </mat-option>
-                          </mat-select>
-                       
-                       
+                        </mat-select>
+                        <mat-error *ngIf="instrumentTypeMaster.touched && !instrumentTypeMaster.valid">
+                            <mat-error *ngIf="instrumentTypeMaster.errors.required">Please select Instrument Type
+                            </mat-error>
+                        </mat-error>
                     </mat-form-field>
+
                 </div>
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Detaprtment</mat-label>
-                        <mat-select required name="department" [(ngModel)]="instrumentMaster.department.id">
+                        <mat-select required name="department" #department="ngModel"
+                            [(ngModel)]="instrumentMaster.department.id">
                             <mat-option value="">-Select-</mat-option>
                             <mat-option *ngFor="let department of departments" [value]="department.id">
-                              {{department.name}}
+                                {{department.name}}
                             </mat-option>
-                          </mat-select>
+                        </mat-select>
+                        <mat-error *ngIf="department.touched && !department.valid">
+                            <mat-error *ngIf="department.errors.required">Please select Department</mat-error>
+                        </mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -32,51 +39,74 @@
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Code</mat-label>
-                        <input required  matInput placeholder="Instrument Code" name="code" [(ngModel)]="instrumentMaster.code">
+                        <input required minlength="6" maxlength="10" matInput placeholder="Instrument Code" name="code"
+                            #code="ngModel" [(ngModel)]="instrumentMaster.code">
+                        <mat-error *ngIf="code.touched && !code.valid">
+                            <mat-error *ngIf="code.errors.required">Code is Required</mat-error>
+                            <mat-error *ngIf="code.errors.minlength">Minimum length is 6</mat-error>
+                            <mat-error *ngIf="code.errors.maxlength">Maximum length is 10</mat-error>
+                        </mat-error>
                     </mat-form-field>
-                   
+
                 </div>
+
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Description</mat-label>
-                        <input required  matInput placeholder="description" name="description" [(ngModel)]="instrumentMaster.description">
+                        <input required matInput placeholder="description" name="description" #description="ngModel"
+                            [(ngModel)]="instrumentMaster.description">
+                        <mat-error *ngIf="description.touched && !description.valid">
+                            <mat-error *ngIf="description.errors.required">Please select Instrument Type</mat-error>
+                        </mat-error>
                     </mat-form-field>
                 </div>
             </div>
-           
-        
+
+
             <div class="row">
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Make</mat-label>
-                        <input required  matInput placeholder="make" name="make" [(ngModel)]="instrumentMaster.make">
+                        <input required matInput placeholder="make" #make="ngModel" name="make"
+                            [(ngModel)]="instrumentMaster.make">
+                        <mat-error *ngIf="make.touched && !make.valid">
+                            <mat-error *ngIf="make.errors.required">Please mention Maker</mat-error>
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Purchace Date</mat-label>
-                        <input matInput [max]="maxDate"  [matDatepicker]="picker" name="purchaseDate" [(ngModel)]="instrumentMaster.purchaseDate">
+                        <input readonly matInput [max]="maxDate" [matDatepicker]="picker" name="purchaseDate"
+                            [(ngModel)]="instrumentMaster.purchaseDate">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
+                        <!-- <mat-error *ngIf="purchaseDate.errors.required">Please mention Maker</mat-error> -->
                     </mat-form-field>
                 </div>
             </div>
-        
+
             <div class="row">
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Calibration Frequency (Days)</mat-label>
-                        <input type="number" required  matInput placeholder="calibrationFrequency" name="calibrationFrequency" [(ngModel)]="instrumentMaster.calibrationFrequency">
+                        <input type="number" required matInput placeholder="calibrationFrequency"
+                            name="calibrationFrequency" #calibrationFrequency="ngModel"
+                            [(ngModel)]="instrumentMaster.calibrationFrequency">
+                        <mat-error *ngIf="calibrationFrequency.touched && !calibrationFrequency.valid">
+                            <mat-error *ngIf="calibrationFrequency.errors.required">Please select Days</mat-error>
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Last Calibration Date</mat-label>
-                       
-                            <input matInput [max]="maxDate"  [matDatepicker]="picker2" name="lastCalibrationDate" [(ngModel)]="instrumentMaster.lastCalibrationDate">
-                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                            <mat-datepicker #picker2></mat-datepicker>
-                        
+
+                        <input readonly matInput [max]="maxDate" [matDatepicker]="picker2" name="lastCalibrationDate"
+                            [(ngModel)]="instrumentMaster.lastCalibrationDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+
                     </mat-form-field>
                 </div>
             </div>
@@ -85,13 +115,22 @@
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Where Used</mat-label>
-                        <input required  matInput placeholder="whereUsed" name="whereUsed" [(ngModel)]="instrumentMaster.whereUsed">
+                        <input required matInput placeholder="whereUsed" name="whereUsed" #whereUsed="ngModel"
+                            [(ngModel)]="instrumentMaster.whereUsed">
+                        <mat-error *ngIf="whereUsed.touched && !whereUsed.valid">
+                            <mat-error *ngIf="whereUsed.errors.required">Please mention where it is used</mat-error>
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Range</mat-label>
-                        <input required  matInput placeholder="range" name="calibrationRange" [(ngModel)]="instrumentMaster.calibrationRange">
+                        <input required matInput placeholder="range" name="calibrationRange" #calibrationRange="ngModel"
+                            [(ngModel)]="instrumentMaster.calibrationRange">
+                        <mat-error *ngIf="calibrationRange.touched && !calibrationRange.valid">
+                            <mat-error *ngIf="calibrationRange.errors.required">Please mention range</mat-error>
+                            <!-- <mat-error *ngIf="calibrationRange.errors.pattern">Please select in standard range</mat-error> -->
+                        </mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -100,17 +139,25 @@
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Accuracy</mat-label>
-                        <input required  matInput placeholder="accuracy" name="accuracy" [(ngModel)]="instrumentMaster.accuracy">
+                        <input required matInput placeholder="accuracy" name="accuracy" #accuracy="ngModel"
+                            [(ngModel)]="instrumentMaster.accuracy">
+                        <mat-error *ngIf="accuracy.touched && !accuracy.valid">
+                            <mat-error *ngIf="accuracy.errors.required">Please mention accuracy</mat-error>
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label title="Accuracy unit of measure">Accuracy UOM</mat-label>
-                        <mat-select required name="accuracyUom" [(ngModel)]="instrumentMaster.accuracyUom">
+                        <mat-select required name="accuracyUom" #accuracyUom="ngModel"
+                            [(ngModel)]="instrumentMaster.accuracyUom">
                             <mat-option *ngFor="let unit of units" [value]="unit.name">
-                              {{unit.name}}
+                                {{unit.name}}
                             </mat-option>
-                          </mat-select>
+                        </mat-select>
+                        <mat-error *ngIf="accuracyUom.touched && !accuracyUom.valid">
+                            <mat-error *ngIf="accuracyUom.errors.required">Please Select Accuracy Unit</mat-error>
+                        </mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -119,13 +166,21 @@
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Master Std</mat-label>
-                        <input required  matInput placeholder="masterStd" name="masterStd" [(ngModel)]="instrumentMaster.masterStd">
+                        <input required matInput placeholder="masterStd" name="masterStd" #masterStd="ngModel"
+                            [(ngModel)]="instrumentMaster.masterStd">
+                        <mat-error *ngIf="masterStd.touched && !masterStd.valid">
+                            <mat-error *ngIf="masterStd.errors.required">Please mention Standard</mat-error>
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
-                        <mat-label >Least Count</mat-label>
-                        <input type="number" required   matInput placeholder="leastCount" name="leastCount" [(ngModel)]="instrumentMaster.leastCount">
+                        <mat-label>Least Count</mat-label>
+                        <input type="number" required matInput placeholder="leastCount" name="leastCount"
+                            #leastCount="ngModel" [(ngModel)]="instrumentMaster.leastCount">
+                        <mat-error *ngIf="leastCount.touched && !leastCount.valid">
+                            <mat-error *ngIf="leastCount.errors.required">Please Select least Count</mat-error>
+                        </mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -133,23 +188,24 @@
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Calibration Agency</mat-label>
-                        <mat-select name="calibrationAgency" [(ngModel)]="instrumentMaster.calibrationAgency">
+                        <mat-select name="calibrationAgency" #calibrationAgency="ngModel"
+                            [(ngModel)]="instrumentMaster.calibrationAgency">
                             <mat-option [value]="null">-Select-</mat-option>
-                            <mat-option *ngFor="let agency of calibrationAgencies"  [value]="agency">
-                              {{agency.name}}
+                            <mat-option *ngFor="let agency of calibrationAgencies" [value]="agency">
+                                {{agency.name}}
                             </mat-option>
-                          </mat-select>
+                        </mat-select>
+                        <!-- <mat-error *ngIf="calibrationAgency.errors.required">Please Select Agency</mat-error> -->
                     </mat-form-field>
                 </div>
-               
+
             </div>
         </div>
-        </mat-dialog-content>
-        
-        <mat-dialog-actions align="end">
-                <button type="submit" mat-raised-button color="primary">Save</button>
-                &nbsp; &nbsp;
-                    <button type="button" mat-raised-button color="accent" (click)="onClose()">Cancel</button>
-                </mat-dialog-actions>
-        </form>
+    </mat-dialog-content>
 
+    <mat-dialog-actions align="end">
+        <button type="submit" mat-raised-button color="primary">Save</button>
+        &nbsp; &nbsp;
+        <button type="button" mat-raised-button color="accent" (click)="onClose()">Cancel</button>
+    </mat-dialog-actions>
+</form>

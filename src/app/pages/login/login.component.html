@@ -9,20 +9,25 @@
                     <img src="../../../assets/img/" alt="Logo">
                 </div>
                 <h1 class="text-center">Login Here!!</h1>
-                <form (ngSubmit)="formSubmit()" >
+                <form #login="ngForm" (ngSubmit)="formSubmit()" >
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Username</mat-label>
-                        <input required maxlength="30" minlength="5" matInput placeholder="Username" name="username" [(ngModel)]="user.username">
-                        
+                        <input required maxlength="30" minlength="5" matInput placeholder="Username" name="username" #username="ngModel" [(ngModel)]="user.username">
+                        <mat-error *ngIf="username.touched && !username.valid">
+                             <mat-error *ngIf="username.errors.required">Mention Username</mat-error>
+                            </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input type="password" required matInput placeholder="Password" name="password" [(ngModel)]="user.password">
+                        <input type="password" required matInput placeholder="Password" name="password" #password="ngModel" [(ngModel)]="user.password">
+                        <mat-error *ngIf="password.touched && !password.valid">
+                               <mat-error *ngIf="password.errors.required">Please mention your Password</mat-error>
+                            </mat-error>
                     </mat-form-field>
 
                     <div class="container text-center">
-                        <button type="submit" mat-raised-button color="primary">Login</button>
+                        <button type="submit" mat-raised-button color="primary" [disabled]="!login.form.valid">Login</button>
                         &nbsp; &nbsp;
                             <button type="button" mat-raised-button color="accent" (click)="clearForm()" >Clear</button>
                     </div>

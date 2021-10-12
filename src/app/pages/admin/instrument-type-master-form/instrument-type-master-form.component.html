@@ -1,21 +1,30 @@
-<form class="col-md-6 offset-md-3" (ngSubmit)="formSubmit()">
+<form #instrumenttype="ngForm" class="col-md-6 offset-md-3" (ngSubmit)="formSubmit()">
     <mat-dialog-content class="bootstrap-wrapper mat-typography">
         <div class="container-fluid">
     <mat-form-field class="full-width" appearance="outline">
         <mat-label>Short Name</mat-label>
-        <input required maxlength="30" minlength="5" matInput placeholder="Short Name" name="title" [(ngModel)]="instrumentTypeMaster.shortName">
-        
+        <input required maxlength="30" minlength="5" matInput placeholder="Short Name" name="title" #title="ngModel" [(ngModel)]="instrumentTypeMaster.shortName">        
     </mat-form-field>
+    <div *ngIf="title.touched && !title.valid">                   
+        <mat-error *ngIf="title.errors.required">Name is Required for Identification</mat-error>
+        <mat-error *ngIf="title.errors.minlength" >Minimum length is 5</mat-error> 
+        <mat-error *ngIf="title.errors.maxlength" >Maximum length is 30</mat-error>           
+     </div>
 
     <mat-form-field class="full-width" appearance="outline">
         <mat-label>Description</mat-label>
-        <textarea required matInput placeholder="Description" name="description" [(ngModel)]="instrumentTypeMaster.description" rows="4"></textarea>
+        <textarea required matInput placeholder="Description" name="description" #description="ngModel" [(ngModel)]="instrumentTypeMaster.description" rows="4"></textarea>
     </mat-form-field>
+    <div *ngIf="description.touched && !description.valid">                   
+        <mat-error *ngIf="description.errors.required">Add some Description</mat-error>
+        <!-- <mat-error *ngIf="description.errors.minlength" >Minimum length is 5</mat-error>  -->
+        <!-- <mat-error *ngIf="description.errors.maxlength" >Maximum length is 30</mat-error>            -->
+     </div>
 
 </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-        <button type="submit" mat-raised-button color="primary">Save</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!instrumenttype.form.valid">Save</button>
         &nbsp; &nbsp;
             <button type="button" mat-raised-button color="accent" (click)="onClose()">Cancel</button>
         </mat-dialog-actions>

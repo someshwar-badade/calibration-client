@@ -14,16 +14,19 @@
                     </mat-form-field> -->
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Instrument</mat-label>
-                        <input type="text"
+                        <input required type="text"
                                placeholder="Pick one"
                                aria-label="Instrument"
-                               name="instrumentMaster" [(ngModel)]="instrumentCalibration.instrumentMaster"
+                               name="instrumentMaster" #instrumentMaster="ngModel" [(ngModel)]="instrumentCalibration.instrumentMaster"
                                (input)="instrumentChange($event)"
                                matInput
                                [matAutocomplete]="auto">
                         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
                           <mat-option *ngFor="let option of instruments " [value]="option" >{{option.code}}</mat-option>
                         </mat-autocomplete>
+                        <mat-error *ngIf="instrumentMaster.touched && !instrumentMaster.valid">
+                        <mat-error *ngIf="instrumentMaster.errors.required">Please Select any instrument</mat-error>
+                    </mat-error>
                       </mat-form-field>
                 </div>
                 <div class="col-md-6">
@@ -41,13 +44,16 @@
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Referance No.</mat-label>
-                        <input   matInput placeholder="make" name="refNo" [(ngModel)]="instrumentCalibration.refNo">
+                        <input required  matInput placeholder="make" name="refNo" #refNo="ngModel" [(ngModel)]="instrumentCalibration.refNo">
+                        <mat-error *ngIf="refNo.touched && !refNo.valid">
+                      <mat-error *ngIf="refNo.errors.required">Please mention reference number</mat-error>
+                    </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Date</mat-label>
-                        <input matInput [max]="maxDate"  [matDatepicker]="picker" name="dateOfCalibration" [(ngModel)]="instrumentCalibration.dateOfCalibration">
+                        <input readonly matInput [max]="maxDate"  [matDatepicker]="picker" name="dateOfCalibration" [(ngModel)]="instrumentCalibration.dateOfCalibration">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -57,15 +63,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Remark</mat-label>
-                        
+                        <mat-label>Remark</mat-label>                        
                         <input type="text"   matInput placeholder="Remark" name="remark" [(ngModel)]="instrumentCalibration.remark">
                     </mat-form-field>
                 </div>
                 <div class="col-md-6">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Calibration Completion Date</mat-label>
-                        <input matInput   [matDatepicker]="picker2" name="calibrationCompletedDate" [(ngModel)]="instrumentCalibration.calibrationCompletedDate">
+                        <input readonly matInput   [matDatepicker]="picker2" name="calibrationCompletedDate" [(ngModel)]="instrumentCalibration.calibrationCompletedDate">
                         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                         <mat-datepicker #picker2></mat-datepicker>
                     </mat-form-field>

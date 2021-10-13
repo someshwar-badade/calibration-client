@@ -25,6 +25,9 @@ import { CompanyComponent } from './pages/admin/company/company.component';
 import { CompanyFormComponent } from './pages/admin/company-form/company-form.component';
 import { InstrumentCalibrationDetailsComponent } from './pages/admin/instrument-calibration-details/instrument-calibration-details.component';
 import { CalibrationAgencyComponent } from './pages/admin/calibration-agency/calibration-agency.component';
+import { CompanyDetailsComponent } from './pages/admin/company-details/company-details.component';
+import { DepartmentComponent } from './pages/admin/department/department.component';
+import { DepartmentFormComponent } from './pages/admin/department-form/department-form.component';
 
 const routes: Routes = [
 
@@ -118,6 +121,18 @@ const routes: Routes = [
       {
         path:'company-form',
         component:CompanyFormComponent
+      },
+      {
+        path:'company-details/:companyId',
+        component:CompanyDetailsComponent
+      },
+      {
+        path:'department',
+        component:DepartmentComponent
+      },
+      {
+        path:'department-form',
+        component:DepartmentFormComponent
       },
       {
         path:'calibration-agency',

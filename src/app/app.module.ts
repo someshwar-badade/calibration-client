@@ -68,7 +68,9 @@ import { InstrumentCalibrationObservationFormComponent } from './pages/admin/ins
 import { LoginService } from './services/login.service';
 import { CalibrationAgencyComponent } from './pages/admin/calibration-agency/calibration-agency.component';
 import { CalibrationAgencyFormComponent } from './pages/admin/calibration-agency-form/calibration-agency-form.component';
-
+import { DepartmentComponent } from './pages/admin/department/department.component';
+import { DepartmentFormComponent } from './pages/admin/department-form/department-form.component';
+import { CompanyDetailsComponent } from './pages/admin/company-details/company-details.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +109,9 @@ import { CalibrationAgencyFormComponent } from './pages/admin/calibration-agency
     InstrumentCalibrationObservationFormComponent,
     CalibrationAgencyComponent,
     CalibrationAgencyFormComponent,
+    DepartmentComponent,
+    DepartmentFormComponent,
+    CompanyDetailsComponent,
   ],
   imports: [
     BrowserModule,

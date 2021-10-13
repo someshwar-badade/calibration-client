@@ -1,0 +1,18 @@
+<form class="col-md-6 offset-md-3" (ngSubmit)="formSubmit()">
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Department Name</mat-label>
+        <input required maxlength="30" minlength="5" matInput placeholder="Department Name" name="name" [(ngModel)]="dept.name">
+        
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea required matInput placeholder="Description" name="description" [(ngModel)]="dept.description" rows="4"></textarea>
+    </mat-form-field>
+
+    <div class="container text-center">
+        <button type="submit" mat-raised-button color="primary">Save</button>
+        &nbsp; &nbsp;
+            <button type="button" mat-raised-button color="accent" (click)="onClose()">Cancel</button>
+    </div>
+</form>

@@ -35,6 +35,10 @@ export class CompanyService {
     );
   }
  
+  public getCompany(getCompanyId) : Observable<any> {
+    return this.http.get(`${baseUrl}/api/company/${getCompanyId}`);
+  }
+
   //add
   public addCompanyType(user:any){
     return this.http.post(`${baseUrl}/api/company`,user);
@@ -49,4 +53,24 @@ export class CompanyService {
   public deleteCompanyType(user:any){
     return this.http.delete(`${baseUrl}/api/company/${user.id}`);
   }
+
+  public getDepartments(getCompanyId) : Observable<any> {
+    return this.http.get(`${baseUrl}/api/department/company/${getCompanyId}`);
+  }
+
+  //add
+  public addDepartment(department:any){
+    return this.http.post(`${baseUrl}/api/department`,department);
+  }
+
+  //update 
+  public updateDepartment(department:any){
+    return this.http.put(`${baseUrl}/api/department`,department);
+  }
+
+  //delete
+  public deleteDepartment(department:any){
+    return this.http.delete(`${baseUrl}/api/department/${department.id}`);
+  }
+
 }
